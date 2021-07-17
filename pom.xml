@@ -1,0 +1,154 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>AutomationTestChallenge</groupId>
+  <artifactId>AutomationTestChallenge</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+        <java.version>1.8</java.version>
+        <selenium.version>3.7.1</selenium.version>
+        <cucumber.version>4.8.1</cucumber.version>
+        <cucumberReport.version>4.1.0</cucumberReport.version>
+        <maven.compiler.version>3.7.0</maven.compiler.version>
+        <surefire.plugin.version>3.0.0-M4</surefire.plugin.version>
+        <TestNG.version>7.1.0</TestNG.version>
+        <logback.version>1.2.3</logback.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <Exreport.version>2.40.2</Exreport.version>
+        <Cucumberpicocontainer.version>6.9.1</Cucumberpicocontainer.version>
+        <ScreenShot.version>1.5.4</ScreenShot.version>
+        <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        
+  </properties>
+    
+<dependencies>
+    <!-- Cucumber dependencies -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+      
+		<dependency>
+		    <groupId>io.cucumber</groupId>
+		    <artifactId>cucumber-testng</artifactId>
+		    <version>${cucumber.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>io.cucumber</groupId>
+		    <artifactId>cucumber-core</artifactId>
+		    <version>${cucumber.version}</version>
+		</dependency>
+				
+		<dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>${cucumberReport.version}</version>
+        </dependency>
+        
+       <dependency>
+	        <groupId>io.cucumber</groupId>
+	        <artifactId>cucumber-picocontainer</artifactId>
+	        <version>${Cucumberpicocontainer.version}</version>
+	        <scope>test</scope>    
+   		</dependency>
+		
+		 <!-- Surefire (report/command) dependencies -->
+		<dependency>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-surefire-plugin</artifactId>
+		    <version>${surefire.plugin.version}</version>
+		</dependency>
+		
+		<!-- TestNG dependencies -->
+		<dependency>
+		    <groupId>org.testng</groupId>
+		    <artifactId>testng</artifactId>
+		    <version>${TestNG.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		<!-- LogBack dependencies -->
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-classic</artifactId>
+		    <version>${logback.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-core</artifactId>
+		    <version>${logback.version}</version>
+		</dependency>
+		
+		<dependency>
+	      <groupId>ch.qos.logback</groupId>
+	      <artifactId>logback-core</artifactId>
+	      <version>${logback.version}</version>
+	      <type>test-jar</type>
+	      <scope>test</scope>
+	    </dependency>
+		
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>${slf4j.version}</version>
+		</dependency>
+		
+		<!-- selenium java -->
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-java</artifactId>
+		    <version>${selenium.version}</version>
+		</dependency>
+		
+		<!-- extent reports dependencies -->
+		<dependency>
+		    <groupId>com.relevantcodes</groupId>
+		    <artifactId>extentreports</artifactId>
+		    <version>${Exreport.version}</version>
+		</dependency>
+		
+		<!-- web driver manager dependencies -->
+		<dependency>
+		    <groupId>io.github.bonigarcia</groupId>
+		    <artifactId>webdrivermanager</artifactId>
+		    <version>${webdrivermanager.version}</version>
+		</dependency>
+    
+   	<!-- Screenshot dependencies -->
+	<dependency>
+	    <groupId>ru.yandex.qatools.ashot</groupId>
+	    <artifactId>ashot</artifactId>
+	    <version>${ScreenShot.version}</version>
+	</dependency>
+    
+	</dependencies>
+	
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>3.5.2</version>
+                <configuration>
+                <includes>
+                    <include>**/TestRunner.java</include>
+                </includes>
+            </configuration>
+            </plugin>
+        </plugins>
+    </build>   
+</project>

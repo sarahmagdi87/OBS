@@ -1,0 +1,21 @@
+<configuration>
+	<property name="LOG_PATH" value="logs"/>
+	<timestamp key="timestamp-by-second" datePattern="yyyyMMdd'T'HHmmss"/>
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+	    <encoder>
+	        <pattern>%date [%-5level] [%logger] - %msg%n</pattern>
+	    </encoder>
+    </appender>
+    
+    <appender name="File-Appender" class="ch.qos.logback.core.FileAppender">
+	    <file>${LOG_PATH}/logfile-${timestamp-by-second}.log</file>
+	    <encoder>
+	     	<pattern>%d [%c] %p : %m%n</pattern>
+	    </encoder>
+    </appender>
+ 
+    <root level="DEBUG">
+    	<appender-ref ref="CONSOLE"/>
+        <appender-ref ref="File-Appender"/>
+    </root>   
+</configuration>
