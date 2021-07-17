@@ -91,7 +91,7 @@ public class TestBase {
 			   }
 		}
 		
-		public void NavigateToHome() throws Throwable {
+		public void NavigateToGoogle() throws Throwable {
 			try {
 				ConfigFileReader();
 				String URL = properties.getProperty("url");

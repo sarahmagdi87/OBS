@@ -25,13 +25,11 @@ public class OBSSteps extends TestBase{
 			logger.info("Scenario is Start");
 			test = report.startTest("Scenarios");
 			openBrowser();
-			HomeMethod = new ProductsPage(); 
-			CatergoriesMethod = new OBSHomePage();
-			CartMethods = new GoogleHomePage();
 		}
 		
 		 @Given("^navigate to google$")
 		 public void navigate_to_google() throws Throwable {
+			 NavigateToGoogle();
 		}
 
 		@When("^open (.+) that has the URL (.+)$")

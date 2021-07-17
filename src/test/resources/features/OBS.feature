@@ -1,6 +1,6 @@
 Feature: OBS Task
 
-Scenario Outline: OBS Task
+Scenario: OBS Task
 Given navigate to google
 And search for "Orange Business services"
 When open "Orange Business Services: Your partner for digital ..." that has the URL "https://www.orange-business.com/en"
