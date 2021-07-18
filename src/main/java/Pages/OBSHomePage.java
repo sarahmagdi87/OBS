@@ -50,8 +50,8 @@ public class OBSHomePage extends BaseMethods{
 			try {
 				getSolutionBtn(menuItem).click();
 				getAllProductsBtn(subItem).click();
-				logger.info(menuItem+"->"+subItem);
-				test.log(LogStatus.INFO, "OBS logo is diplayed");
+				logger.info(menuItem+"->"+subItem+" is selected");
+				test.log(LogStatus.INFO, menuItem+"->"+subItem+" is selected");
 				} catch (Exception e)
 			{
 				 logger.error("Exception -> "+e);

@@ -13,12 +13,9 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -137,23 +134,5 @@ public class BaseMethods {
 		
 		 public static String timestamp() {
 		        return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
-		}
-		 	
-		public static void WaitInvisibilityOf(WebElement Element) {
-			WebDriverWait wait=new WebDriverWait(driver, 5);
-			wait.until(ExpectedConditions.invisibilityOf(Element));
-			logger.info("Element is InVisibile");
-		}
-			
-		public static void WaitvisibilityOf(WebElement Element) {
-			WebDriverWait wait=new WebDriverWait(driver, 20);
-			wait.until(ExpectedConditions.visibilityOf(Element));
-			logger.info("Element is Visibile");
-		}
-			
-		public static void WaitElementClickable(WebElement Element) {
-			WebDriverWait wait=new WebDriverWait(driver, 20);
-			wait.until(ExpectedConditions.elementToBeClickable(Element));
-			logger.info("Element is Clickable");
 		}
 }

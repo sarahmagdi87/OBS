@@ -46,14 +46,14 @@ public class ProductsPage extends BaseMethods{
 	 }
 	 
 	 public static WebElement getitemPageTitle(String pageTitle) {
-		 itemPageTitle = By.xpath("//h1[@class='page-header']//span[text("+pageTitle+")]");
+		 itemPageTitle = By.xpath("//span[text()="+pageTitle+"]");
 		 return driver.findElement(itemPageTitle);
 	 }
 	 
 	 public void selectItemFromDDL(String item) throws Exception
 	 {
 		 try {
-		 getSearchDDL().selectByValue(item);
+		 getSearchDDL().selectByVisibleText(item);
 		 logger.info("Select Option"+item);
 		 test.log(LogStatus.INFO, "Select Option"+item);
 		} catch (Exception e)
@@ -85,7 +85,7 @@ public class ProductsPage extends BaseMethods{
 		boolean flag = false;
 		try {
 			flag = getitemPageTitle(title).isDisplayed();
-			logger.info(title+"is displayed");
+			logger.info(title+" is displayed");
 			test.log(LogStatus.PASS, title+"is displayed");
 		} catch (Exception e)
 		{
@@ -125,12 +125,14 @@ public class ProductsPage extends BaseMethods{
 	 public void selectOption(String title) throws Exception
 	 {
 		 try {
-			 List<WebElement>  results = getFilterResult();
+			 List<WebElement> results = getFilterResult();
              for (WebElement result : results)
 			 {
-				result.getText().equals(title);
-				result.click();
-				test.log(LogStatus.INFO, title+"is clicked");
+				if(result.getText().equals(title))
+				{
+					result.click();
+					test.log(LogStatus.INFO, title+"is clicked");
+				}
 			 }
 		 } catch (Exception e)
 		 {
