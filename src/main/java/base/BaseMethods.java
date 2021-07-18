@@ -13,9 +13,12 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -23,13 +26,13 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TestBase {
+public class BaseMethods {
 	 	
 	public static WebDriver driver;
 	public static Properties properties;
 	public static ExtentTest test;
 	public static ExtentReports report = new ExtentReports(System.getProperty("user.dir")+"\\Reports\\ExtentReportResults"+timestamp()+".html");
-	static Logger logger =  LoggerFactory.getLogger(TestBase.class);
+	static Logger logger =  LoggerFactory.getLogger(BaseMethods.class);
 	private final String propertyFilePath= "./src/test/resources/Properties/testconfig.properties";
 			
 	public void openBrowser() { 		
@@ -98,7 +101,7 @@ public class TestBase {
 				logger.info("Navigate to Home Page");
 				driver.get(URL);
 		        driver.manage().window().maximize();
-		        if(driver.getTitle().contains("Gourmet Egypt"))
+		        if(driver.getTitle().contains("Google"))
 		        {
 		        	logger.info("Navigated to -> "+URL);
 		        	test.log(LogStatus.PASS, "Navigated to -> "+URL);
@@ -134,5 +137,23 @@ public class TestBase {
 		
 		 public static String timestamp() {
 		        return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
+		}
+		 	
+		public static void WaitInvisibilityOf(WebElement Element) {
+			WebDriverWait wait=new WebDriverWait(driver, 5);
+			wait.until(ExpectedConditions.invisibilityOf(Element));
+			logger.info("Element is InVisibile");
+		}
+			
+		public static void WaitvisibilityOf(WebElement Element) {
+			WebDriverWait wait=new WebDriverWait(driver, 20);
+			wait.until(ExpectedConditions.visibilityOf(Element));
+			logger.info("Element is Visibile");
+		}
+			
+		public static void WaitElementClickable(WebElement Element) {
+			WebDriverWait wait=new WebDriverWait(driver, 20);
+			wait.until(ExpectedConditions.elementToBeClickable(Element));
+			logger.info("Element is Clickable");
 		}
 }
